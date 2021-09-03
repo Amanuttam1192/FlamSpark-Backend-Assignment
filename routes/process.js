@@ -1,9 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const path    = require('path');
 const upload  = require('../upload');
-router.post('/process',upload.single('image'),async (req, res) => {
-    
-    await res.send(req.file);
-});
+const { processImage } = require('../controllers/process');
+router.post('/process',upload.single('image'),processImage);
 module.exports = router;
